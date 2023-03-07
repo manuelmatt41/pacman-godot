@@ -1,34 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckjivh8el6jij"]
+[gd_scene load_steps=10 format=3 uid="uid://ckjivh8el6jij"]
 
 [ext_resource type="Script" path="res://player/Player.cs" id="1_bl54r"]
 [ext_resource type="Script" path="res://addons/StateMachine/DefaultStateMachineNode.cs" id="2_4dx44"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wl78o"]
-load_path = "res://.godot/imported/player.png-5262c6d47c932fbaaca112fe33671111.ctex"
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dobux"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_wl78o")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://bkh02r4ttonq1" path="res://player/assets/pacman1.png" id="3_hquxm"]
+[ext_resource type="Texture2D" uid="uid://bow16hcrgbsyb" path="res://player/assets/pacman2.png" id="4_grg6r"]
+[ext_resource type="Texture2D" uid="uid://bvvxf4e8empjr" path="res://player/assets/pacman3.png" id="5_g3f0o"]
+[ext_resource type="Texture2D" uid="uid://cjy66dtnb1jyy" path="res://player/assets/pacman4.png" id="6_cpdjl"]
+[ext_resource type="Texture2D" uid="uid://bxjdq2fys72gj" path="res://player/assets/pacman5.png" id="7_mjxha"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jegij"]
 radius = 13.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ik6l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hquxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_grg6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g3f0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cpdjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mjxha")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 16.0
+}]
+
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_bl54r")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_dobux")
-animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jegij")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_4dx44")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_8ik6l")
+animation = &"Walk"
+frame_progress = 0.59382
